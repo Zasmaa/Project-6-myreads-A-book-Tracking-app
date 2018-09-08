@@ -1,5 +1,5 @@
 
-import react, {compoment} from 'react'
+import React, {compoment} from 'react'
 class searchPage extends compoment {
 	render(){
 		return(

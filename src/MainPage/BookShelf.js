@@ -1,4 +1,4 @@
-import React, {component} from 'React'
+import React, {component} from 'react'
 class BookShelf extends React.component{
 	 render(){
 	 	return (

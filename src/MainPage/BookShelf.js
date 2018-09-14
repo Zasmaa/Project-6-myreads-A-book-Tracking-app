@@ -1,5 +1,5 @@
 import React, {component} from 'react'
-class BookShelf extends React.component{
+class BookShelf extends React.Component{
 	 render(){
 	 	return (
 	 		<div className="list-books">

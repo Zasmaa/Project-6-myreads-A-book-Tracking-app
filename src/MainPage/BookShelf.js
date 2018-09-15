@@ -1,4 +1,5 @@
 import React, {component} from 'react'
+import Book from "./bookList"
 class BookShelf extends React.Component{
 	 render(){
 	 	return (
@@ -27,7 +28,7 @@ class BookShelf extends React.Component{
             </ol>
           </div>
         </div>
-        
+
         <div className="bookshelf">
           <h2 className="bookshelf-title">Want to Read</h2>
           <div className="bookshelf-books">

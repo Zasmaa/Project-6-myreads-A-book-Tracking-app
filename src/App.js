@@ -19,7 +19,9 @@ componentDidMount(){
     return (
       <div className="app">
       
-    <BookShelf/>
+    <Shelf
+      books = {this.state.Books}
+      />
           
       </div>
     )

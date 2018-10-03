@@ -15,8 +15,8 @@ class bookList extends React.Component{
                       </select>
                     </div>
                   </div>
-                  <div className="book-title">To Kill a Mockingbird</div>
-                  <div className="book-authors">Harper Lee</div>
+                  <div className="book-title"></div>
+                  <div className="book-authors"></div>
                 </div>
                 
 			)

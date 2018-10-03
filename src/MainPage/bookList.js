@@ -1,5 +1,6 @@
 import React, {component} from 'react';
 class bookList extends React.Component{
+	componentDidMount() {console.log(this)}
 	render(){
 		return(
 						<div className="book">

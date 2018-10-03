@@ -8,7 +8,7 @@ class SearchPage extends React.Component {
 
 			<div className="search-books">
             <div className="search-books-bar">
-            <Link className="close-search" to='/'>Close</Link>
+            <Link className="close-search" to='/'> Close </Link>
              <div className="search-books-input-wrapper">
         
                 <input type="text" placeholder="Search by title or author"/>

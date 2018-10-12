@@ -5,6 +5,7 @@ import bookkList from './MainPage/bookList';
 import Shelf from './MainPage/Shelf'
 import * as BooksAPI from './BooksAPI'
 import {Switch, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './App.css'
 
 
@@ -22,6 +23,9 @@ componentDidMount(){
    this.setState({books}) 
   })
 }
+changeShelf =(book, shelf) => {
+  BooksAPI.update (book, shelf);
+}
 
   render() {
     console.log(this.state.books)
@@ -30,16 +34,15 @@ componentDidMount(){
    
    
 
-<Route exact path='/' render={()=>
-  <Shelf
-      books = {this.state.books}
-      />
-
+<Route exact path='/' render={()=> 
+  <BookShelf
+  books={this.state.books}
+  changeShelf={this.changeShelf}
+  />
 }
 />
    
 
-}/>
 
       </div>
 
@@ -51,5 +54,6 @@ componentDidMount(){
       
   }
 }
+
 
 export default BooksApp

@@ -25,6 +25,9 @@ componentDidMount(){
 }
 changeShelf =(book, shelf) => {
   BooksAPI.update (book, shelf);
+  BooksAPI.getAll().then((books) =>{ 
+   this.setState({books}) 
+  })
 }
 
   render() {
@@ -57,3 +60,4 @@ changeShelf =(book, shelf) => {
 
 
 export default BooksApp
+

@@ -40,11 +40,11 @@ constructor(props){
   
 
       <Shelf
-       title ="Currently Reading" books= {(this.props.books.filter(book => book.shelf === "currentlyReading"))}/>
+       title ="Currently Reading" books= {(this.props.books.filter(book => book.shelf === "currentlyReading"))} changeShelf={this.props.changeShelf}/>
       <Shelf
-      title ="Want to Read" books= {(this.props.books.filter(book => book.shelf === "wantToRead"))}/>
+      title ="Want to Read" books= {(this.props.books.filter(book => book.shelf === "wantToRead"))} changeShelf={this.props.changeShelf}/>
       <Shelf
-      title ="Read" books= {(this.props.books.filter(book => book.shelf === "read"))}/>
+      title ="Read" books= {(this.props.books.filter(book => book.shelf === "read"))} changeShelf={this.props.changeShelf}/>
         
         
       </div>

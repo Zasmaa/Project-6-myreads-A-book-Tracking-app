@@ -1,8 +1,44 @@
 
 import React, {Compoment} from 'react';
 import {Link} from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 class SearchPage extends React.Component {
 	render(){
+constructor(props){
+  super(props)
+   this.state = {
+   books :[]
+   query : ''
+   searchResult :[]
+  }
+
+}
+
+componentDidMount(){
+  BooksAPI.getAll().then((books) =>{ 
+   this.setState({books}) 
+  })
+}
+updataQuery = (query) => {
+  this.setState({query : query
+  })
+}
+Searchinput = (query) =>{
+  BooksAPI.search(query.then(searchResult)=>{
+    this.setState({searchResult: searchResult})
+  })
+}
+changeShelf =(book, shelf) => {
+  BooksAPI.update (book, shelf);
+  BooksAPI.getAll().then((books) =>{ 
+   this.setState({books}) 
+  })
+}
+
+
+
+
+
 		return(
 			<div>
 

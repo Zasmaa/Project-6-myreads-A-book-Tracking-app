@@ -1,6 +1,13 @@
-
-
-   query : ''
+import React, {Compoment} from 'react';
+import {Link} from 'react-router-dom'
+import Book from "./bookList"
+import * as BooksAPI from './BooksAPI'
+class SearchPage extends React.Component {
+  constructor(props){
+  super(props)
+   this.state = {
+   books :[]
+   query : ""
    searchResult :[]
   }
 

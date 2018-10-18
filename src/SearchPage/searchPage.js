@@ -6,8 +6,8 @@ class SearchPage extends React.Component {
   constructor(props){
   super(props)
    this.state = {
-   books :[]
-   query : ""
+   books :[],
+   query : "",
    searchResult :[]
   }
 
@@ -18,11 +18,12 @@ componentDidMount(){
   })
 }
 updataQuery = (query) => {
-  this.setState({query : query
+  this.setState({
+    query : query
   })
 }
 Searchinput = (query) =>{
-  BooksAPI.search(query.then(searchResult)=>{
+  BooksAPI.search(query).then((searchResult) => {
     
     this.setState({searchResult: searchResult})
 
@@ -73,4 +74,3 @@ changeShelf =(book, shelf) => {
 }
 
 export default SearchPage;
-

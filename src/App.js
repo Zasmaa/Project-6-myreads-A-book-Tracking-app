@@ -44,6 +44,9 @@ changeShelf =(book, shelf) => {
   />
 }
 />
+<Route exact path= '/' render ={()=>
+  <SearchPage/>
+}/>
    
 
 
@@ -60,4 +63,5 @@ changeShelf =(book, shelf) => {
 
 
 export default BooksApp
+
 

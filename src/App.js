@@ -37,16 +37,19 @@ changeShelf =(book, shelf) => {
    
    
 
-<Route exact path='/' render={()=> 
-  <BookShelf
+<Route exact path='/' render={()=> (
+   <BookShelf
   books={this.state.books}
   changeShelf={this.changeShelf}
   />
-}
-/>
-<Route exact path= '/' render ={()=>
+
+
+  )}/>
+
+<Route path= '/SearchPage' render={()=>(
+
   <SearchPage/>
-}/>
+  )}/>
    
 
 
@@ -63,5 +66,3 @@ changeShelf =(book, shelf) => {
 
 
 export default BooksApp
-
-

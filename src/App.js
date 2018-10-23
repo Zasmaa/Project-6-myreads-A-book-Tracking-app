@@ -46,7 +46,7 @@ changeShelf =(book, shelf) => {
 
   )}/>
 
-<Route path= '/SearchPage' render={()=>(
+<Route path= '/search' render={()=>(
 
   <SearchPage/>
   )}/>

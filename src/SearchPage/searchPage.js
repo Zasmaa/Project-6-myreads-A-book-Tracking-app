@@ -1,40 +1,46 @@
+
 import React, {Compoment} from 'react';
-import {Link} from 'react-router-dom'
-import Book from "./bookList"
-import * as BooksAPI from './BooksAPI'
+import {Link} from 'react-router-dom';
+import Book from "../MainPage/bookList"
+import Shelf from '../MainPage/Shelf'
+import * as BooksAPI from '../BooksAPI'
+
 class SearchPage extends React.Component {
-  constructor(props){
+ constructor(props){
   super(props)
    this.state = {
    books :[],
-   query : "",
-   searchResult :[]
+   query : '',
+   searchResults : [],
+
   }
+ }
+ updateQuery = (query) => {
+  this.setState({query :query}, this.Results);
 
-}
-componentDidMount(){
-  BooksAPI.getAll().then((books) =>{ 
-   this.setState({books}) 
-  })
-}
-updataQuery = (query) => {
-  this.setState({
-    query : query
-  })
-}
-Searchinput = (query) =>{
-  BooksAPI.search(query).then((searchResult) => {
-    
-    this.setState({searchResult: searchResult})
+ }
 
-  })
+Results() {
+  if (query){
+    BooksAPI.search(query).then(searchResults)=>{
+     console.log(searchResults)
+      if (searchResults.error){
+        return this.setState({searchResults: []})
+
+      } else {
+        return thsi.setState({searchResults: searchResults})
+      }
+      
+    }
+  }
 }
-changeShelf =(book, shelf) => {
-  BooksAPI.update (book, shelf);
-  BooksAPI.getAll().then((books) =>{ 
-   this.setState({books}) 
-  })
-}
+//credit :  learned these from  both  ryan waite walk through and Maeva walk through : 
+//https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
+//https://www.youtube.com/watch?v=i6L2jLHV9j8
+ 
+
+
+
 	render(){
 
 		return(
@@ -45,9 +51,10 @@ changeShelf =(book, shelf) => {
             <Link className="close-search" to='/'> Close </Link>
              <div className="search-books-input-wrapper">
         
-                <input type="text" placeholder="Search by title or author"
+                <input type="text" 
+                placeholder="Search by title or author"
                 value= {this.state.query}
-                onChange ={(event)=> this.updataQuery(event.target.value)}
+                 onChange = {(event) => this.updateQuery(event.target.value)}
 
                 />
 
@@ -56,7 +63,21 @@ changeShelf =(book, shelf) => {
             </div>
 
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid"> 
+              {
+                this.state.searchResults.map(searchResults =>(
+                  <li key={searchResults.id}>
+                  <Book book={searchResults}
+                  </li>
+
+                  ))
+              }
+
+
+              </ol>
+
+
+
             </div>
 
           </div>
@@ -73,4 +94,4 @@ changeShelf =(book, shelf) => {
 
 }
 
-export default SearchPage;
+export default SearchPage

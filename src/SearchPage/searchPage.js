@@ -1,8 +1,8 @@
-
 import React, {Compoment} from 'react';
 import {Link} from 'react-router-dom';
-import Book from "../MainPage/bookList"
+import Book from '../MainPage/bookList'
 import Shelf from '../MainPage/Shelf'
+import BookShelf from '../MainPage/BookShelf'
 import * as BooksAPI from '../BooksAPI'
 
 class SearchPage extends React.Component {
@@ -15,29 +15,31 @@ class SearchPage extends React.Component {
 
   }
  }
- updateQuery = (query) => {
-  this.setState({query :query}, this.Results);
+ updateQuery (query) {
+  this.setState({query:query}, this.Results);
 
  }
 
-Results() {
-  if (query){
-    BooksAPI.search(query).then(searchResults)=>{
+Results (query) {
+  if (this.state.query === ''){
+    return this.setState({searchResults: []})
+    
+  }  
+  BooksAPI.search(query).then(searchResults =>{
      console.log(searchResults)
       if (searchResults.error){
         return this.setState({searchResults: []})
 
       } else {
-        return thsi.setState({searchResults: searchResults})
+        return this.setState({searchResults: searchResults})
       }
       
-    }
-  }
+    })
 }
 //credit :  learned these from  both  ryan waite walk through and Maeva walk through : 
 //https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
 //https://www.youtube.com/watch?v=i6L2jLHV9j8
- 
+
 
 
 
@@ -67,7 +69,7 @@ Results() {
               {
                 this.state.searchResults.map(searchResults =>(
                   <li key={searchResults.id}>
-                  <Book book={searchResults}
+                  <Book book={searchResults}/>
                   </li>
 
                   ))

@@ -10,7 +10,6 @@ class SearchPage extends React.Component {
  constructor(props){
   super(props)
    this.state = {
-   books :[],
    query : '',
    searchResults : [],
 
@@ -23,33 +22,33 @@ class SearchPage extends React.Component {
   }
 
 results (query) {
-  if (query){
-    // if you have query then fetch the book 
+  if (query === ''){
+    this.setState ({
+      searchResults : []
+    });
+   
+    return;
+    
+  } 
+   // if you have query then fetch the book 
 
-    BooksAPI.search(query).then(searchResults =>{
-     console.log(searchResults)
-      if (searchResults.error){
-        // if you have an error in the query return empty 
-        return this.setState({searchResults: []})
+    BooksAPI.search(query).then(results =>{
+     console.log(results)
+    results instanceof Array
+        ? this.setState({ searchResults: results })
+        : this.setState({ searchResults: [] });
 
-      } else {
-        // no error reterun results 
-        return this.setState({searchResults: searchResults})
-      }
       
-    })
-    
-    
-  } else {
-    // else return an empty 
-    return this.setState({searchResults: []})
-  }
+    });
+
 
   
-}
+};
 //credit :  learned these from  both  ryan waite walk through and Maeva walk through : 
 //https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
 //https://www.youtube.com/watch?v=i6L2jLHV9j8
+//also drunkenkismet and sara-FEND help me by answering my quesiton on sluck DM. 
+
 
 
 
@@ -78,9 +77,9 @@ results (query) {
             <div className="search-books-results">
               <ol className="books-grid"> 
               {
-                this.state.searchResults.map(searchResults =>(
-                  <li key={searchResults.id}>
-                  <Book book={searchResults}
+                this.state.searchResults.map(results =>(
+                  <li key={results.id}>
+                  <Book book={results}
                   changeShelf={this.props.changeShelf}
                   />
                   </li>

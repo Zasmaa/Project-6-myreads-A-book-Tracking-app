@@ -15,26 +15,36 @@ class SearchPage extends React.Component {
 
   }
  }
- updateQuery (query) {
-  this.setState({query:query}, this.Results);
 
- }
 
-Results (query) {
-  if (this.state.query === ''){
-    return this.setState({searchResults: []})
-    
-  }  
-  BooksAPI.search(query).then(searchResults =>{
+   updateQuery = (query) => {
+    this.setState(() => ({ query: query }), this.results(query));
+  }
+
+results (query) {
+  if (query){
+    // if you have query then fetch the book 
+
+    BooksAPI.search(query).then(searchResults =>{
      console.log(searchResults)
       if (searchResults.error){
+        // if you have an error in the query return empty 
         return this.setState({searchResults: []})
 
       } else {
+        // no error reterun results 
         return this.setState({searchResults: searchResults})
       }
       
     })
+    
+    
+  } else {
+    // else return an empty 
+    return this.setState({searchResults: []})
+  }
+
+  
 }
 //credit :  learned these from  both  ryan waite walk through and Maeva walk through : 
 //https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
@@ -69,7 +79,9 @@ Results (query) {
               {
                 this.state.searchResults.map(searchResults =>(
                   <li key={searchResults.id}>
-                  <Book book={searchResults}/>
+                  <Book book={searchResults}
+                  changeShelf={this.props.changeShelf}
+                  />
                   </li>
 
                   ))

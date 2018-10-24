@@ -46,7 +46,8 @@ constructor(props){
       <Shelf
       title ="Read" books= {(this.props.books.filter(book => book.shelf === "read"))} changeShelf={this.props.changeShelf}/>
         
-        
+        // credit :  learned these from ryan waite walk through : https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
+	      
       </div>
     </div>
 

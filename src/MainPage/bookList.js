@@ -2,7 +2,6 @@ import React, {component} from 'react';
 import Shelf from './Shelf'
 import BookShelf from './BookShelf';
 class bookList extends React.Component{
-  componentDidMount() {console.log(this.props)}
   render(){
     const {book, changeShelf} = this.props
     return(

@@ -89,5 +89,5 @@ This repository is the starter code for _all_ Udacity students. Therefore, we mo
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-##Acknowledgment
+## Acknowledgment
 In this project, many websites were a reference. The reference website is the bootstrap website, w3schools.com, and MDN web doc. Amongst other additional resources, utilize were Technical Walk-throughs & Webinars and youtube

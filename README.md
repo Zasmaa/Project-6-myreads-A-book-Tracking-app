@@ -88,3 +88,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+##Acknowledgment
+In this project, many websites were a reference. The reference website is the bootstrap website, w3schools.com, and MDN web doc. Amongst other additional resources, utilize were Technical Walk-throughs & Webinars and youtube

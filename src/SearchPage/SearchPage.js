@@ -30,7 +30,6 @@ results (query) {
     return;
     
   } 
-   // if you have query then fetch the book 
 
     BooksAPI.search(query).then(results =>{
      console.log(results)

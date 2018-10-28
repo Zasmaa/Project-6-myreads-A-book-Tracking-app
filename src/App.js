@@ -10,6 +10,9 @@ import './App.css'
 
 
 class BooksApp extends React.Component { 
+
+
+
 constructor(props){
   super(props)
    this.state = {
@@ -19,23 +22,37 @@ constructor(props){
 }
 
 componentDidMount(){
+  this.getBooksDetails ()
+}
+
+getBooksDetails = () => {
   BooksAPI.getAll().then((books) =>{ 
    this.setState({books}) 
   })
 }
-changeShelf =(book, shelf) => {
-  BooksAPI.update (book, shelf);
-  BooksAPI.getAll().then((books) =>{ 
-   this.setState({books}) 
-  })
-}
+//changeShelf =(book, shelf) => {
+  //BooksAPI.update (book, shelf).then((books) =>{ 
+   //this.getBooksDetails () 
+  //})
+// }
+
+
+
+
+   changeShelf = (book, shelf) => {
+      BooksAPI.update(book, shelf).then( response =>{
+        book.shelf =shelf;
+        this.setState(state=> ({
+          books: state.books.filter(b => b.id !== book.id.concat({book}))
+        }))
+      })
+    }
 
   render() {
     console.log(this.state.books)
     return (
    <div className="app">
-   
-   
+
 
 <Route exact path='/' render={()=> (
    <BookShelf
@@ -49,23 +66,24 @@ changeShelf =(book, shelf) => {
 <Route path= '/search' render={()=>(
 
     <SearchPage
+     books={this.state.books}
 
         changeShelf={this.changeShelf} 
         />
 
 
   )}/>
-   
-
-
-      </div>
 
 
 
 
-      )
 
-      
+   </div>
+
+
+
+
+      )    
   }
 }
 

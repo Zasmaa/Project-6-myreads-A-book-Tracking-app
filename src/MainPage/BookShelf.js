@@ -2,12 +2,6 @@ import React, {component} from 'react'
 import Book from "./bookList";
 import Shelf from './Shelf'
 import {Link} from 'react-router-dom'
-
-
-
-
-
-
 class BookShelf extends React.Component{
   componentDidMount(){
     console.log(this)
@@ -27,6 +21,7 @@ constructor(props){
 }
 
   render() {
+    let currentShelf = this.props.title;
 
     return (
     <div className="list-books">
@@ -47,7 +42,7 @@ constructor(props){
       title ="Read" books= {(this.props.books.filter(book => book.shelf === "read"))} changeShelf={this.props.changeShelf}/>
         
         
-	      
+        
       </div>
     </div>
 
@@ -60,7 +55,7 @@ constructor(props){
 }
 
 
-	
+  
 
-	 		
-export default BookShelf 
+      
+export default BookShelf

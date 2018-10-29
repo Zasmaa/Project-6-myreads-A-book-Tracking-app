@@ -34,27 +34,27 @@ getBooksDetails = () => {
   //BooksAPI.update (book, shelf).then((books) =>{ 
    //this.getBooksDetails () 
   //})
-// }
+//}
 
 
 
 
-   changeShelf = (book, shelf) => {
-      BooksAPI.update(book, shelf).then( response =>{
+  changeShelf = (book, shelf) => {
+     BooksAPI.update(book, shelf).then( response =>{
         book.shelf =shelf;
         this.setState(state=> ({
           books: state.books.filter(b => b.id !== book.id.concat({book}))
         }))
       })
-    }
+   }
+ 
 
   render() {
     console.log(this.state.books)
     return (
    <div className="app">
 
-
-<Route exact path='/' render={()=> (
+    <Route exact path='/' render={()=> (
    <BookShelf
   books={this.state.books}
   changeShelf={this.changeShelf}
@@ -74,15 +74,7 @@ getBooksDetails = () => {
 
   )}/>
 
-
-
-
-
    </div>
-
-
-
-
       )    
   }
 }

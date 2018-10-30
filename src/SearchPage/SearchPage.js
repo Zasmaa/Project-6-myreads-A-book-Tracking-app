@@ -1,5 +1,3 @@
-
-
 import React, { Compoment } from "react";
 import { Link } from "react-router-dom";
 import Book from "../MainPage/bookList";
@@ -70,7 +68,7 @@ class SearchPage extends React.Component {
                   let Shelf = "none"
 
                   this.props.books.map(book => (
-                    book.id === searchResults.id ?
+                    book.id === results.id ?
                     Shelf = book.Shelf :
                     ''
                     ));
@@ -101,4 +99,4 @@ class SearchPage extends React.Component {
   }
 }
 
-export default SearchPage
+export default SearchPage;

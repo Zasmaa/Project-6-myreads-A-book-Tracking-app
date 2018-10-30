@@ -30,21 +30,13 @@ getBooksDetails = () => {
    this.setState({books}) 
   })
 }
-//changeShelf =(book, shelf) => {
-  //BooksAPI.update (book, shelf).then((books) =>{ 
-   //this.getBooksDetails () 
-  //})
-//}
 
-
-
-
-  changeShelf = (book, shelf) => {
-     BooksAPI.update(book, shelf).then( response =>{
+ changeShelf = (book, shelf) => {
+     BooksAPI.update(book, shelf).then( response => {
         book.shelf =shelf;
-        this.setState(state=> ({
-          books: state.books.filter(b => b.id !== book.id.concat({book}))
-        }))
+        this.setState(prevState => {
+          return {books: prevState.books.concat(book)}
+        })
       })
    }
  

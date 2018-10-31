@@ -1,8 +1,7 @@
 import React, { Compoment } from "react";
 import { Link } from "react-router-dom";
 import Book from "../MainPage/bookList";
-import Shelf from "../MainPage/Shelf";
-import BookShelf from "../MainPage/BookShelf";
+
 import * as BooksAPI from "../BooksAPI";
 
 class SearchPage extends React.Component {
@@ -23,11 +22,14 @@ class SearchPage extends React.Component {
       });
       return;
     } 
+   
   
     BooksAPI.search(query).then(results => {
       results instanceof Array
         ? this.setState({ searchResults: results })
         : this.setState({ searchResults: [] });
+
+
     });
     
   };
@@ -36,6 +38,8 @@ class SearchPage extends React.Component {
     this.setState({ query: e });
     this.updateQuery(e);
   };
+ 
+
 
   //credit :  learned these from  both  ryan waite walk through and Maeva walk through : 
 //https://www.youtube.com/watch?v=acJHkd6K5kI&=&feature=youtu.be
@@ -63,7 +67,7 @@ class SearchPage extends React.Component {
 
           <div className="search-books-results">
             <ol className="books-grid">
-              {
+            {
                 this.state.searchResults.map(results =>{
                   let Shelf = "none"
 
@@ -78,13 +82,16 @@ class SearchPage extends React.Component {
                      <li key={results.id}>
                   <Book book={results}
                   changeShelf={this.props.changeShelf}
+                  
                   currentShelf = {Shelf}
+                  
                   />
                   </li>
 
                     )
                 })
               }
+
 
 
 

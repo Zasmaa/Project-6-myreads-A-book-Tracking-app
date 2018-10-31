@@ -34,7 +34,7 @@ getBooksDetails = () => {
  changeShelf = (book, shelf) => {
      BooksAPI.update(book, shelf).then( response => {
         const books = this.state.books;
-        books.find(b => b.id === book.id).shelf = shelf;
+        books.find(b => b.id !== book.id).shelf = shelf;
         this.setState({
           books: books
         })

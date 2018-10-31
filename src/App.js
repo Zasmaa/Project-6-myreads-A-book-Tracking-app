@@ -1,7 +1,6 @@
 import React from 'react';
 import BookShelf from './MainPage/BookShelf';
 import SearchPage from './SearchPage/SearchPage';
-import bookkList from './MainPage/bookList';
 import Shelf from './MainPage/Shelf'
 import * as BooksAPI from './BooksAPI'
 import {Switch, Route} from 'react-router-dom'
@@ -71,7 +70,9 @@ getBooksDetails = () => {
     <SearchPage
      books={this.state.books}
 
-        changeShelf={this.updateBook} 
+        changeShelf={this.updateBook}
+
+        currentShelf = {Shelf} 
        
         />
 

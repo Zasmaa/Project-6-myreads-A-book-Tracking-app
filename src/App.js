@@ -33,13 +33,13 @@ getBooksDetails = () => {
 
  changeShelf = (book, shelf) => {
      BooksAPI.update(book, shelf).then( response => {
-        book.shelf =shelf;
-        this.setState(prevState => {
-          return {books: prevState.books.concat(book)}
+        const books = this.state.books;
+        books.find(b => b.id === book.id).shelf = shelf;
+        this.setState({
+          books: books
         })
       })
    }
- 
 
   render() {
   
@@ -73,3 +73,4 @@ getBooksDetails = () => {
 
 
 export default BooksApp
+

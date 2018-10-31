@@ -1,4 +1,4 @@
-import React, {component} from 'react'
+import React from 'react'
 import Shelf from './Shelf'
 import {Link} from 'react-router-dom'
 class BookShelf extends React.Component{
@@ -18,8 +18,6 @@ constructor(props){
 }
 
   render() {
-   // let currentShelf = this.props.title;
-
     return (
     <div className="list-books">
     <div className="list-books-title">

@@ -1,6 +1,6 @@
 import React, {component} from 'react';
 import Book from "./bookList"
-import BookShelf from './BookShelf';
+
 
 
 class Shelf extends React.Component{
@@ -35,4 +35,3 @@ changeShelf={this.props.changeShelf}
   }
 }
 export default Shelf
-

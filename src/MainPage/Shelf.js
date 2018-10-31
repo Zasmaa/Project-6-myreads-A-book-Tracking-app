@@ -4,9 +4,7 @@ import BookShelf from './BookShelf';
 
 
 class Shelf extends React.Component{
-  componentDidMount(){
-    console.log(this)
-}
+
   render(){
     
     return(

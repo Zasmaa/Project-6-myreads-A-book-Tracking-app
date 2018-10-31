@@ -3,11 +3,9 @@ import Book from "./bookList";
 import Shelf from './Shelf'
 import {Link} from 'react-router-dom'
 class BookShelf extends React.Component{
-  componentDidMount(){
-    console.log(this)
-}
 
 constructor(props){
+
   super(props);
   this.state={
     racks: [

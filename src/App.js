@@ -32,14 +32,25 @@ getBooksDetails = () => {
 }
 
  changeShelf = (book, shelf) => {
+  console.log(book, shelf)
      BooksAPI.update(book, shelf).then( response => {
-        const books = this.state.books;
-        books.find(b => b.id !== book.id).shelf = shelf;
+      const books = this.state.books;
+          books.find((b) => b.id === book.id).shelf = shelf;
         this.setState({
-          books: books
+         books: books
+       })
+      })
+  }
+  updateBook = (book, shelf) => {
+     BooksAPI.update(book, shelf).then( response => {
+        book.shelf =shelf;
+        this.setState(prevState => {
+          return {books: prevState.books.concat(book)}
         })
       })
    }
+
+
 
   render() {
   
@@ -60,7 +71,8 @@ getBooksDetails = () => {
     <SearchPage
      books={this.state.books}
 
-        changeShelf={this.changeShelf} 
+        changeShelf={this.updateBook} 
+       
         />
 
 

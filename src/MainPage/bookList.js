@@ -4,7 +4,7 @@ import BookShelf from './BookShelf';
 class bookList extends React.Component{
   render(){
     const {book, changeShelf} = this.props
-    console.log(this.props)
+   
     let showThubnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''
     return(
             <div className="book">

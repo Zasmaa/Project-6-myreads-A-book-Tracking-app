@@ -1,10 +1,8 @@
 import React from 'react';
 import BookShelf from './MainPage/BookShelf';
 import SearchPage from './SearchPage/SearchPage';
-import Shelf from './MainPage/Shelf'
 import * as BooksAPI from './BooksAPI'
-import {Switch, Route} from 'react-router-dom'
-import {Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import './App.css'
 
 
@@ -71,8 +69,6 @@ getBooksDetails = () => {
      books={this.state.books}
 
         changeShelf={this.updateBook}
-
-        currentShelf = {Shelf} 
        
         />
 
@@ -86,4 +82,3 @@ getBooksDetails = () => {
 
 
 export default BooksApp
-

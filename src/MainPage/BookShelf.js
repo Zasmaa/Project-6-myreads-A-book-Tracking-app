@@ -1,5 +1,4 @@
 import React, {component} from 'react'
-import Book from "./bookList";
 import Shelf from './Shelf'
 import {Link} from 'react-router-dom'
 class BookShelf extends React.Component{
@@ -19,7 +18,7 @@ constructor(props){
 }
 
   render() {
-    let currentShelf = this.props.title;
+   // let currentShelf = this.props.title;
 
     return (
     <div className="list-books">

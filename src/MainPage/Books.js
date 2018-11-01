@@ -1,7 +1,7 @@
 import React from 'react'
 import Shelf from './Shelf'
 import {Link} from 'react-router-dom'
-class BookShelf extends React.Component{
+class Books extends React.Component{
 
 constructor(props){
 
@@ -53,4 +53,4 @@ constructor(props){
   
 
       
-export default BookShelf
+export default Books

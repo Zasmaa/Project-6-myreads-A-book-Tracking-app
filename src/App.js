@@ -82,4 +82,3 @@ getBooksDetails = () => {
 
 
 export default BooksApp
-

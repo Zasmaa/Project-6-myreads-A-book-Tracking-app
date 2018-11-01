@@ -1,5 +1,5 @@
 import React from 'react';
-class bookList extends React.Component{
+class List extends React.Component{
   render(){
     const {book, changeShelf} = this.props
    
@@ -25,4 +25,4 @@ class bookList extends React.Component{
       )
   }
 }
-export default bookList
+export default List

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Book from "../MainPage/bookList";
+import Book from "../MainPage/List";
 
 import * as BooksAPI from "../BooksAPI";
 
@@ -9,7 +9,7 @@ class SearchPage extends React.Component {
     super(props);
     this.state = {
       query: "",
-      searchResults: []
+      searchFinding: []
     };
   }
 
@@ -18,7 +18,7 @@ class SearchPage extends React.Component {
   updateQuery = query => {
     if (query === "") {
       this.setState({
-        searchResults: []
+        searchFinding: []
       });
       return;
     } 
@@ -26,8 +26,8 @@ class SearchPage extends React.Component {
   
     BooksAPI.search(query).then(results => {
       results instanceof Array
-        ? this.setState({ searchResults: results })
-        : this.setState({ searchResults: [] });
+        ? this.setState({ searchFinding: results })
+        : this.setState({ searchFinding: [] });
 
 
     });
@@ -68,7 +68,7 @@ class SearchPage extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
             {
-                this.state.searchResults.map(results =>{
+                this.state.searchFinding.map(results =>{
                   let Shelf = "none"
 
                   this.props.books.map(book => (

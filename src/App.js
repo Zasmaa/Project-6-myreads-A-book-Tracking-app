@@ -1,5 +1,5 @@
 import React from 'react';
-import BookShelf from './MainPage/BookShelf';
+import Books from './MainPage/Books';
 import SearchPage from './SearchPage/SearchPage';
 import * as BooksAPI from './BooksAPI'
 import {Route} from 'react-router-dom'
@@ -55,7 +55,7 @@ getBooksDetails = () => {
    <div className="app">
 
     <Route exact path='/' render={()=> (
-   <BookShelf
+   <Books
   books={this.state.books}
   changeShelf={this.changeShelf}
   />
@@ -82,3 +82,4 @@ getBooksDetails = () => {
 
 
 export default BooksApp
+

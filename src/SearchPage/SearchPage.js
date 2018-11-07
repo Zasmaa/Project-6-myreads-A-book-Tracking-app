@@ -8,36 +8,49 @@ class SearchPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      books: [],
       query: "",
       searchFinding: []
     };
   }
 
+componentDidMount() {
+      BooksAPI.getAll()
+      .then(response => {
+         this.setState({books:response});
+      })
+   }
 
+ updateQuery = (query) => {
+  this.setState({query:query}, this.seachBooks)
+ }
   
-  updateQuery = query => {
-    if (query === "") {
-      this.setState({
-        searchFinding: []
-      });
-      return;
-    } 
-   
-  
-    BooksAPI.search(query).then(results => {
-      results instanceof Array
-        ? this.setState({ searchFinding: results })
-        : this.setState({ searchFinding: [] });
+  seachBooks(){
+    if(this.state.query === '' || this.state.query === undefined){
+      return this.setState({searchFinding: []})
+    }
+    BooksAPI.search(this.state.query).then(searchFinding => {
+      if (searchFinding.error) {
+        return this.setState({searchFinding: []})
+      }
+      else{
+        searchFinding.forEach(b =>{
+let finding = this.state.books.filter(B => B.id === b.id)
+if (finding[0]) {b.shelf =finding[0].shelf}
+        })
+return this.setState({searchFinding: searchFinding})
+      }
+    })
 
-
-    });
-    
-  };
- 
-  handleChange = e => {
-    this.setState({ query: e });
-    this.updateQuery(e);
-  };
+  }
+ updateBook = (book, shelf) => {
+     BooksAPI.update(book, shelf).then( response => {
+        book.shelf =shelf;
+        this.setState(prevState => {
+          return {books: prevState.books.concat(book)}
+        })
+      })
+   }
  
 
 
@@ -59,9 +72,8 @@ class SearchPage extends React.Component {
               <input
                 type="text"
                 placeholder="Search by title or author"
-                value={this.state.query}
-                onChange={event => this.handleChange(event.target.value)}
-              />
+               value={this.state.query}
+                onChange={(event) => this.updateQuery(event.target.value)} />
             </div>
           </div>
 
@@ -91,8 +103,6 @@ class SearchPage extends React.Component {
                     )
                 })
               }
-
-
 
 
 

@@ -18,6 +18,7 @@ constructor(props){
 }
 
   render() {
+   
     return (
     <div className="list-books">
     <div className="list-books-title">
@@ -30,7 +31,7 @@ constructor(props){
   
 
       <Shelf
-       title ="Currently Reading" books= {(this.props.books.filter(book => book.shelf === "currentlyReading"))} changeShelf={this.props.changeShelf}/>
+       title ="Currently Reading" books= {(this.props.books.filter(book => book.shelf === "currentlyReading"))} changeShelf={this.props.changeShelf}  />
       <Shelf
       title ="Want to Read" books= {(this.props.books.filter(book => book.shelf === "wantToRead"))} changeShelf={this.props.changeShelf}/>
       <Shelf
